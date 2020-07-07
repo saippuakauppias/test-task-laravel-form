@@ -56,7 +56,7 @@ $(document).ready(function(){
                             $('<td>').text(item.created_at),
                         )
                     );
-                })
+                });
             }
         });
     };
@@ -119,6 +119,21 @@ $(document).ready(function(){
             }
         });
     });
+
+    $('.order-tariffs').on('click', function () {
+        var $this = $(this),
+            $dates = $('.order-delivery-dates')
+            days = $this.data('weekdays').split(',');
+
+        $.each($dates, function (index, elem) {
+            var $elem = $(elem);
+            if (days.indexOf($elem.data('weekday')) == -1) {
+                $elem.prop('disabled', true);
+            } else {
+                $elem.prop('disabled', false);
+            }
+        });
+    })
 
     $(window).on('load', function() {
         reloadClients();

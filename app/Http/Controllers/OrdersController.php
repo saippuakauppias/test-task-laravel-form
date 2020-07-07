@@ -42,6 +42,8 @@ class OrdersController extends Controller
         $validator = Validator::make($request->all(), [
             'client_full_name' => ['required', 'max:80'],
             'client_phone' => ['required', 'max:25', 'regex:/^\+[0-9]{1}\([0-9]{3}\)[0-9]{3}-[0-9]{4}$/'],
+            'tariff_id' => ['required', 'numeric'],
+            'delivery_date' => ['required', 'date_format:Y-m-d'],
         ]);
         $validator->validate();
 

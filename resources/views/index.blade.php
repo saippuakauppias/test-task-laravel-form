@@ -6,17 +6,17 @@
         @csrf
 
         <div class="form-row">
-            <div class="col-md-6 mb-3">
+            <div class="col-md-6 mb-3" id="base_client_full_name">
                 <input type="text" name="client_full_name" class="form-control" placeholder="Full Name" required maxlength="80">
             </div>
-            <div class="col-md-6 mb-3">
+            <div class="col-md-6 mb-3" id="base_client_phone">
                 <input type="tel" name="client_phone" class="form-control" pattern="\+[0-9]{1}\([0-9]{3}\)[0-9]{3}-[0-9]{4}" placeholder="+7(123)456-7890" required>
             </div>
         </div>
 
         <div class="form-row">
             <legend class="col-form-label col-sm-1 pt-0">Tariffs:</legend>
-            <div class="col-md-5 mb-3">
+            <div class="col-md-5 mb-3" id="base_tariff_id">
                 @foreach ($tariffs as $tariff)
                     <div class="form-check">
                         <input class="form-check-input order-tariffs" type="radio" name="tariff_id" id="tariff_{{ $tariff->id }}" value="{{ $tariff->id }}" data-weekdays="{{ $tariff->week_days }}" required>
@@ -28,7 +28,7 @@
             </div>
 
             <legend class="col-form-label col-sm-1 pt-0">Delivery:</legend>
-            <div class="col-md-5 mb-3">
+            <div class="col-md-5 mb-3" id="base_delivery_date">
                 @foreach ($week as $date)
                     <div class="form-check">
                         <input class="form-check-input order-delivery-dates" type="radio" name="delivery_date" id="day_{{ $date['day'] }}" value="{{ $date['date'] }}" data-weekday="{{ $date['day'] }}" required disabled>

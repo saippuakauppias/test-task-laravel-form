@@ -66,25 +66,31 @@ $(document).ready(function(){
 
         var $this = $(this);
 
+        var removeValidationErrors = function() {
+            $.each($this.find('input'), function (index, elem) {
+                var $elem = $(elem);
+                if ($elem.hasClass('is-invalid')) {
+                    $elem.removeClass('is-invalid');
+                }
+
+                var $elemErr = $('#base_' + $elem.attr('name') + ' div.invalid-feedback');
+                if ($elemErr.length > 0) {
+                    $elemErr.remove();
+                }
+            });
+        };
+
         $.ajax({
             url: $this.attr('action'),
             method: $this.attr('method'),
             data: $this.serialize(),
             success: function (data) {
                 // remove previous validation errors
+                removeValidationErrors();
+
+                // set disabled to all fields
                 $.each($this.find('input'), function (index, elem) {
-                    var $elem = $(elem);
-                    if ($elem.hasClass('is-invalid')) {
-                        $elem.removeClass('is-invalid');
-
-                        var $elemErr = $elem.parent().find('div.invalid-feedback');
-                        if ($elemErr.length > 0) {
-                            $elemErr.remove();
-                        }
-                    }
-
-                    // set readonly attribute on element
-                    $elem.prop('readonly', true);
+                    $(elem).prop('disabled', true);
                 });
 
                 // show success message
@@ -105,15 +111,18 @@ $(document).ready(function(){
                     return;
                 }
 
+                removeValidationErrors();
+
                 $.each(err.responseJSON.errors, function (field, errors) {
                     $('input[name=' + field + ']').addClass('is-invalid');
 
-                    if ($('input[name=' + field + ']').parent().find('div.invalid-feedback').length == 0) {
-                        $('input[name=' + field + ']').after(
-                            $('<div>').addClass('invalid-feedback').text(errors)
+                    var $base_elem = $('#base_' + field + ' div.invalid-feedback');
+                    if ($base_elem.length == 0) {
+                        $('#base_' + field).append(
+                            $('<div>').addClass('invalid-feedback d-inline').text(errors)
                         );
                     } else {
-                        $('input[name=' + field + ']').parent().find('div.invalid-feedback').text(errors);
+                        $base_elem.text(errors);
                     }
                 });
             }
@@ -132,6 +141,7 @@ $(document).ready(function(){
             } else {
                 $elem.prop('disabled', false);
             }
+            $elem.prop('checked', false);
         });
     })
 

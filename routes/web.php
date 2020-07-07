@@ -18,3 +18,4 @@ Route::get('/', 'IndexController@show')->name('index_show');
 Route::get('/clients', 'ClientsController@index')->name('clients_index');
 
 Route::get('/orders', 'OrdersController@index')->name('orders_index');
+Route::post('/orders/store', 'OrdersController@store')->name('orders_store');

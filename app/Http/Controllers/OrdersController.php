@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 use App\Models\Orders;
 
@@ -38,7 +39,14 @@ class OrdersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'client_full_name' => ['required', 'max:80'],
+            'client_phone' => ['required', 'max:25', 'regex:/^\+[0-9]{1}\([0-9]{3}\)[0-9]{3}-[0-9]{4}$/'],
+        ]);
+        $validator->validate();
+
+
+        return response()->json(['ok' => 1]);
     }
 
     /**

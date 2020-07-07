@@ -13,6 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'IndexController@show')->name('index_show');
+
+Route::get('/clients', 'ClientsController@index')->name('clients_index');

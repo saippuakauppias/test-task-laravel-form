@@ -22,3 +22,4 @@ Route::post('/orders/store', 'OrdersController@store')->name('orders_store');
 
 Route::get('/adv/show1', 'AdvancedController@show1')->name('advanced_show1');
 Route::get('/adv/show2', 'AdvancedController@show2')->name('advanced_show2');
+Route::get('/adv/show3', 'AdvancedController@show3')->name('advanced_show3');

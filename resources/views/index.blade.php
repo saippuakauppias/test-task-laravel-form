@@ -106,4 +106,17 @@
         </thead>
         <tbody></tbody>
     </table>
+
+    <h2 class="text-center">Advanced #3</h2>
+    <table class="table table-hover table-bordered" id="adv3" data-url="{{ route('advanced_show3') }}">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Full Name</th>
+                <th scope="col">Order ID (3rd)</th>
+                <th scope="col">Price</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
 @endsection

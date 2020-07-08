@@ -16,7 +16,7 @@ $(document).ready(function(){
                 }
 
                 // add new
-                json.forEach(function(item) {
+                $.each(json, function(indxe, item) {
                     $tbody.append(
                         $('<tr>').append(
                             $('<td>').text(item.id),
@@ -25,7 +25,7 @@ $(document).ready(function(){
                             $('<td>').text(item.created_at),
                         )
                     );
-                })
+                });
             }
         });
     };
@@ -45,7 +45,7 @@ $(document).ready(function(){
                 }
 
                 // add new
-                json.forEach(function (item) {
+                $.each(json, function (index, item) {
                     $tbody.append(
                         $('<tr>').append(
                             $('<td>').text(item.id),

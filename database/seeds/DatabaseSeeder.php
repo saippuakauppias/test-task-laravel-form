@@ -17,17 +17,17 @@ class DatabaseSeeder extends Seeder
         $tariffs = [
             [
                 'name' => 'First',
-                'price' => 12.34,
+                'price' => 1023.34,
                 'week_days' => ['Wednesday',  'Thursday', 'Sunday'],
             ],
             [
                 'name' => 'Second',
-                'price' => 56.12,
-                'week_days' => ['Monday'],
+                'price' => 1200.12,
+                'week_days' => ['Saturday'],
             ],
             [
                 'name' => 'Third',
-                'price' => 32.43,
+                'price' => 332.43,
                 'week_days' => ['Friday', 'Monday'],
             ],
         ];

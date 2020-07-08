@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 use App\Models\Orders;
+use App\Models\Clients;
 
 class OrdersController extends Controller
 {
@@ -47,6 +48,22 @@ class OrdersController extends Controller
         ]);
         $validator->validate();
 
+        // request data valid
+        $client = Clients::updateOrCreate(
+            [
+                'phone' => $request->input('client_phone'),
+            ],
+            [
+                'full_name' => $request->input('client_full_name')
+            ]
+        );
+
+        $order = Orders::create([
+            'client_id' => $client->id,
+            'tariff_id' => $request->input('tariff_id'),
+            'address' => 'test',
+            'delivery_date' => $request->input('delivery_date'),
+        ]);
 
         return response()->json(['ok' => 1]);
     }

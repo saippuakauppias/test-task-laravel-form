@@ -31,4 +31,30 @@ class AdvancedController extends Controller
 
         return response()->json($data);
     }
+
+    public function show2()
+    {
+        $data = DB::select(
+            'select
+                clients.id,
+                clients.full_name,
+                (
+                    select orders.id
+                    from orders
+                    left join tariffs on tariffs.id = orders.tariff_id
+                    where orders.client_id = clients.id
+                    limit 1 offset 2
+                ) as order_id,
+                (
+                    select tariffs.price
+                    from orders
+                    left join tariffs on tariffs.id = orders.tariff_id
+                    where orders.client_id = clients.id
+                    limit 1 offset 2
+                ) as tariff_price
+            from clients'
+        );
+
+        return response()->json($data);
+    }
 }

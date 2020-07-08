@@ -59,6 +59,35 @@ $(document).ready(function(){
         });
     };
 
+    var reloadAdv2 = function () {
+        var $tbl = $('#adv2');
+
+        $.ajax({
+            url: $tbl.data('url'),
+            dataType: 'json',
+            success: function (json) {
+                var $tbody = $tbl.find('tbody');
+
+                // remove previous
+                while ($tbody.find('tr').length > 0) {
+                    $tbody.find('tr:first').remove();
+                }
+
+                // add new
+                $.each(json, function (indxe, item) {
+                    $tbody.append(
+                        $('<tr>').append(
+                            $('<td>').text(item.id),
+                            $('<td>').text(item.full_name),
+                            $('<td>').text(item.order_id),
+                            $('<td>').text(item.tariff_price),
+                        )
+                    );
+                });
+            }
+        });
+    };
+
     var reloadOrders = function () {
         var $tbl = $('#orders');
 
@@ -94,6 +123,7 @@ $(document).ready(function(){
         reloadClients();
         reloadOrders();
         reloadAdv1();
+        reloadAdv2();
     };
 
     $('#order').on('submit', function() {

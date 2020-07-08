@@ -102,7 +102,7 @@ $(document).ready(function(){
         var $this = $(this);
 
         var removeValidationErrors = function() {
-            $.each($this.find('input'), function (index, elem) {
+            $.each($this.find('.order-field'), function (index, elem) {
                 var $elem = $(elem);
                 if ($elem.hasClass('is-invalid')) {
                     $elem.removeClass('is-invalid');
@@ -131,7 +131,7 @@ $(document).ready(function(){
                 removeValidationErrors();
 
                 // set disabled to all fields
-                $.each($this.find('input'), function (index, elem) {
+                $.each($this.find('.order-field'), function (index, elem) {
                     $(elem).prop('disabled', true);
                 });
 

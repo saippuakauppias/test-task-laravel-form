@@ -19,3 +19,5 @@ Route::get('/clients', 'ClientsController@index')->name('clients_index');
 
 Route::get('/orders', 'OrdersController@index')->name('orders_index');
 Route::post('/orders/store', 'OrdersController@store')->name('orders_store');
+
+Route::get('/adv/show1', 'AdvancedController@show1')->name('advanced_show1');

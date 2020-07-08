@@ -30,6 +30,35 @@ $(document).ready(function(){
         });
     };
 
+    var reloadAdv1 = function () {
+        var $tbl = $('#adv1');
+
+        $.ajax({
+            url: $tbl.data('url'),
+            dataType: 'json',
+            success: function (json) {
+                var $tbody = $tbl.find('tbody');
+
+                // remove previous
+                while ($tbody.find('tr').length > 0) {
+                    $tbody.find('tr:first').remove();
+                }
+
+                // add new
+                $.each(json, function (indxe, item) {
+                    $tbody.append(
+                        $('<tr>').append(
+                            $('<td>').text(item.id),
+                            $('<td>').text(item.full_name),
+                            $('<td>').text(item.count1),
+                            $('<td>').text(item.count2),
+                        )
+                    );
+                });
+            }
+        });
+    };
+
     var reloadOrders = function () {
         var $tbl = $('#orders');
 
@@ -61,6 +90,12 @@ $(document).ready(function(){
         });
     };
 
+    var reloadAll = function() {
+        reloadClients();
+        reloadOrders();
+        reloadAdv1();
+    };
+
     $('#order').on('submit', function() {
         event.preventDefault();
 
@@ -84,7 +119,14 @@ $(document).ready(function(){
             url: $this.attr('action'),
             method: $this.attr('method'),
             data: $this.serialize(),
-            success: function (data) {
+            success: function (json) {
+                if (!json.success) {
+                    console.log(err);
+                    alert('wrong answer, see console');
+
+                    return;
+                }
+
                 // remove previous validation errors
                 removeValidationErrors();
 
@@ -100,8 +142,7 @@ $(document).ready(function(){
                 $this.find('button[type=submit]').hide();
 
                 // reload data
-                reloadClients();
-                reloadOrders();
+                reloadAll();
             },
             error: function (err) {
                 if (err.responseJSON.errors.length == 0) {
@@ -146,7 +187,6 @@ $(document).ready(function(){
     })
 
     $(window).on('load', function() {
-        reloadClients();
-        reloadOrders();
+        reloadAll();
     });
 });

@@ -79,4 +79,18 @@
         </thead>
         <tbody></tbody>
     </table>
+
+    <hr class="m-5">
+    <h2 class="text-center">Advanced #1</h2>
+    <table class="table table-hover table-bordered" id="adv1" data-url="{{ route('advanced_show1') }}">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Full Name</th>
+                <th scope="col">Count1 (< 1000)</th>
+                <th scope="col">Count2 (> 1000)</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
 @endsection

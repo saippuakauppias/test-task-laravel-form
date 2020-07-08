@@ -48,6 +48,7 @@ class OrdersController extends Controller
                 'full_name' => $request->input('client_full_name')
             ]
         );
+        // по-хорошему тут и ниже нужно делать проверку что объект был создан
 
         $order = Orders::create([
             'client_id' => $client->id,
@@ -56,6 +57,6 @@ class OrdersController extends Controller
             'delivery_date' => $request->input('delivery_date'),
         ]);
 
-        return response()->json(['ok' => 1]);
+        return response()->json(['success' => true]);
     }
 }

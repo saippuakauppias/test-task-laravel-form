@@ -15,6 +15,12 @@
         </div>
 
         <div class="form-row">
+            <div class="col-md-12 mb-3" id="base_address">
+                <textarea class="form-control" name="address" placeholder="Address" required></textarea>
+            </div>
+        </div>
+
+        <div class="form-row">
             <legend class="col-form-label col-sm-1 pt-0">Tariffs:</legend>
             <div class="col-md-5 mb-3" id="base_tariff_id">
                 @foreach ($tariffs as $tariff)

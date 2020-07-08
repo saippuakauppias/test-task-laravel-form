@@ -121,7 +121,7 @@ $(document).ready(function(){
             data: $this.serialize(),
             success: function (json) {
                 if (!json.success) {
-                    console.log(err);
+                    console.log(json);
                     alert('wrong answer, see console');
 
                     return;

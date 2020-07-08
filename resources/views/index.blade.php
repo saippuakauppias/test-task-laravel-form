@@ -27,7 +27,7 @@
                     <div class="form-check">
                         <input class="form-check-input order-tariffs" type="radio" name="tariff_id" id="tariff_{{ $tariff->id }}" value="{{ $tariff->id }}" data-weekdays="{{ $tariff->week_days }}" required>
                         <label class="form-check-label" for="tariff_{{ $tariff->id }}">
-                            [ID: {{ $tariff->id }}] {{ $tariff->name }}
+                            [ID: {{ $tariff->id }} | Price: {{ $tariff->price }}] {{ $tariff->name }}
                         </label>
                     </div>
                 @endforeach

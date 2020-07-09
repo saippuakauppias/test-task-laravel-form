@@ -1,5 +1,19 @@
 # Test Task: Laravel Form
 
+## Установка
+
+Используется MySQL, т.к. в PostgreSQL нет типа данных `SET`. В Laravel он реализован только для MySQL.
+
+```bash
+git clone git@github.com:saippuakauppias/test-task-laravel-form.git
+cd test-task-laravel-form
+composer install
+# create mysql database like
+# mysql -uroot -p12345 -e "CREATE DATABASE laravelform CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci"
+php artisan migrate --seed
+# run `php artisan serve` or use Valet for open in browser
+```
+
 ## Условия
 
 Нужно сделать форму оформления заказа для сайта (Некоторое подобие заказа ГФ).

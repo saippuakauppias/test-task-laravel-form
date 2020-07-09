@@ -10,6 +10,7 @@ cd test-task-laravel-form
 composer install
 # create mysql database like
 # mysql -uroot -p12345 -e "CREATE DATABASE laravelform CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci"
+# change db connect variables in `.env`
 php artisan migrate --seed
 # run `php artisan serve` or use Valet for open in browser
 ```

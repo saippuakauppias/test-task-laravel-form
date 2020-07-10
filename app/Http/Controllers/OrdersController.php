@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Validator;
 
 use App\Models\Orders;
 use App\Models\Clients;
-use App\Models\Tariffs;
 
 class OrdersController extends Controller
 {

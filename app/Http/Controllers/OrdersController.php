@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 
 use App\Models\Orders;
 use App\Models\Clients;
+use App\Models\Tariffs;
 
 class OrdersController extends Controller
 {
@@ -34,7 +35,7 @@ class OrdersController extends Controller
             'client_full_name' => ['required', 'max:80'],
             'client_phone' => ['required', 'max:25', 'regex:/^\+[0-9]{1}\([0-9]{3}\)[0-9]{3}-[0-9]{4}$/'],
             'address' => ['required', 'max:150'],
-            'tariff_id' => ['required', 'numeric'],
+            'tariff_id' => ['required', 'numeric', 'exists:App\Models\Tariffs,id'],
             'delivery_date' => ['required', 'date_format:Y-m-d'],
         ]);
         $validator->validate();
